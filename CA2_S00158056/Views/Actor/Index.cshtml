@@ -1,0 +1,87 @@
+﻿@model IEnumerable<CA2_S00158056.Models.Actor>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="Detail">
+    </div>
+</div>
+<span class="btn btn-info btn-lg btn-block" onclick="popCreate()">Add a new Actor</span>
+<br />
+<table id="actorsTable" class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.actorName)
+            </th>
+            <th>Buttons</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @*http://bootsnipp.com/snippets/featured/left-sideways-panel-header*@
+                    <button class="btn btn-sm btn-block btn-default" onclick="popDetails('@item.actorID')">@Html.DisplayFor(modelItem => item.actorName)</button>
+                    <div class="panel panel-info" style="max-height:190px">
+                        <div class="panel-heading">
+                        </div>
+                        <div class="panel-rightbody" style="max-height:160px;width:950px;overflow-y: scroll;">
+                            @Html.Raw(item.description.Replace(Environment.NewLine, "<br/>"))
+                        </div>
+                        <div class="clearfix">
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <span class="btn btn-primary" style="width:110px" onclick="popEdit('@item.actorID')">Edit Actor</span><br />
+                    <span class="btn btn-info" style="width:110px" onclick="popAddCast('@item.actorID')">Add Cast</span><br />
+                    <span class="btn btn-danger" style="width:110px" onclick="popDelete('@item.actorID')">Delete Actor</span>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#actorsTable').dataTable({
+                "pageLength": 4,
+                "lengthMenu": [4, 10]
+            });
+        });
+        function popDetails(actorID) {
+            $('#Detail').load('@Url.Action("PopDetails")' + '?id=' + actorID).show();
+            $('#myModal').modal('show');
+        }
+        function popDelete(actorID) {
+            $('#Detail').load('@Url.Action("Delete")' + '?id=' + actorID).show();
+            $('#myModal').modal('show');
+        }
+        function popCreate() {
+            $('#Detail').load('@Url.Action("Create")').show();
+            $('#myModal').modal('show');
+        }
+        function popAddCast(actorID) {
+            $('#Detail').load('@Url.Action("AddCast")' + '?id=' + actorID).show();
+            $('#myModal').modal('show');
+        }
+        function popRemoveCast() {
+            $('#Detail').load('@Url.Action("RemoveCast")').show();
+            $('#myModal').modal('show');
+        }
+        function popEdit(actorID) {
+            $('#Detail').load('@Url.Action("Edit")' + '?id=' + actorID).show();
+            $('#myModal').modal('show');
+        }
+        function EditCast(movieID, actorID) {
+            var textval = $("#in" + movieID).val();
+            $.ajax({
+                url: '/Actor/EditCast/',
+                data: { id: movieID, id2: actorID, newname: textval }, //parameters go here in object literal form
+            });
+            $('#myModal').modal('hide');
+        }
+    </script>
+}

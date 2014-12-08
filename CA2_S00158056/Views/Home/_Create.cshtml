@@ -1,0 +1,48 @@
+﻿@model CA2_S00158056.Models.Movie
+
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add a new movie</h4>
+            </div>
+            <div class="modal-body">
+                <div class="display-field">
+
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.movieName)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.movieName)
+                        @Html.ValidationMessageFor(model => model.movieName)
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.description)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextAreaFor(model => model.description, new { cols = 75, @rows = 5 })
+                        @Html.ValidationMessageFor(model => model.description)
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.imageUrl)
+                    </div>
+                    <div class="editor-field">
+                        <input type="file" name="file" id="file" onchange="CheckFileName()" accept="image/gif, image/jpeg, image/png, image/jpg" style="width: 100%;" /> <br />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div> }

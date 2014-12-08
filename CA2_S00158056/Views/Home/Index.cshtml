@@ -1,0 +1,103 @@
+﻿@model IEnumerable<CA2_S00158056.Models.Movie>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="Detail">
+    </div>
+</div>
+
+        <span class="btn btn-info btn-lg btn-block" onclick="popCreate()">Add a new Movie</span>
+<br/>
+<table id="moviesTable" class="table table-hover table-striped">
+    <thead>
+        <tr>
+
+            <th>Posters</th>
+            <th>
+                @Html.DisplayNameFor(model => model.movieName)
+            </th>
+            <th>Buttons</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="~/images/@item.imageUrl" style="width:140px; height:210px" />
+                </td>
+                <td>
+                    <button class="btn btn-sm btn-block btn-default" onclick="popDetails('@item.movieID')">@Html.DisplayFor(modelItem => item.movieName)</button>
+                    <div class="panel panel-info" style="max-height:190px">
+                        <div class="panel-heading"></div>
+                        <div class="panel-rightbody" style="max-height:160px;width:800px;overflow-y: scroll;">
+                            @Html.Raw(item.description.Replace(Environment.NewLine, "<br/>"))
+                        </div>
+                        <div class="clearfix">
+                        </div>
+                    </div>
+                </td>
+
+                <td>
+
+                    <span class="btn btn-primary" style="width:110px" onclick="popEdit('@item.movieID')">Edit Movie</span><br/>
+                    <span class="btn btn-info" style="width:110px" onclick="popAddCast('@item.movieID')">Add Cast</span><br/>
+                    <span class="btn btn-danger" style="width:110px" onclick="popDelete('@item.movieID')">Delete Movie</span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#moviesTable').dataTable({
+                "pageLength": 4,
+                "lengthMenu": [4, 10]
+            });
+        });
+        function CheckFileName() {
+            var fileName = document.getElementById("file").value
+            var check = fileName.split(".")[1].toUpperCase()
+            if (check == "PNG" || check == "JPG" || check == "JPEG")
+                return true;
+            else {
+                alert("File with " + fileName.split(".")[1] + " is invalid. Upload a valid image");
+                return false;
+            }
+            return true;
+        }
+        function popDetails(movieID) {
+            $('#Detail').load('@Url.Action("PopDetails")' + '?id=' + movieID).show();
+            $('#myModal').modal('show');
+        }
+        function popDelete(movieID) {
+            $('#Detail').load('@Url.Action("Delete")' + '?id=' + movieID).show();
+            $('#myModal').modal('show');
+        }
+        function popCreate() {
+            $('#Detail').load('@Url.Action("Create")').show();
+            $('#myModal').modal('show');
+        }
+        function popAddCast(movieID) {
+            $('#Detail').load('@Url.Action("AddCast")' + '?id=' + movieID).show();
+            $('#myModal').modal('show');
+        }
+        function popRemoveCast() {
+            $('#Detail').load('@Url.Action("RemoveCast")').show();
+            $('#myModal').modal('show');
+        }
+        function popEdit(movieID) {
+            $('#Detail').load('@Url.Action("Edit")' + '?id=' + movieID).show();
+            $('#myModal').modal('show');
+        }
+        function EditCast(movieID, actorID) {
+            var textval = $("#in" + actorID).val();
+            $.ajax({
+                url: '/Home/EditCast/',
+                data: { id: movieID, id2: actorID, newname: textval }, //parameters go here in object literal form
+            });
+            $('#myModal').modal('hide');
+        }
+    </script>
+}

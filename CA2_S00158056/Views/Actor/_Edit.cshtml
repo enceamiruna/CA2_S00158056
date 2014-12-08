@@ -1,0 +1,52 @@
+﻿@model CA2_S00158056.Models.Actor
+
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+@using (Html.BeginForm())
+{
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Edit "@Html.DisplayFor(model => model.actorName)" actor</h4>
+            </div>
+            <div class="modal-body">
+                <div class="display-field">
+
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+                    @Html.HiddenFor(model => model.actorID)
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.actorName)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.actorName)
+                        @Html.ValidationMessageFor(model => model.actorName)
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.description)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextAreaFor(model => model.description, new { cols = 75, @rows = 5 })
+                        @Html.ValidationMessageFor(model => model.description)
+                    </div>
+                    @*<div class="editor-label">
+                        @Html.LabelFor(model => model.description)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextAreaFor(model => model.description, new { cols = 75, @rows = 5 })
+                        @Html.ValidationMessageFor(model => model.description)
+                    </div>*@
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+}
