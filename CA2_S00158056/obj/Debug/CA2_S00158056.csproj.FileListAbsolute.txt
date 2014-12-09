@@ -39,3 +39,4 @@ C:\Users\Cie\Desktop\CA2_S00158056\CA2_S00158056\obj\Debug\CA2_S00158056.dll
 C:\Users\Cie\Desktop\CA2_S00158056\CA2_S00158056\obj\Debug\CA2_S00158056.pdb
 C:\Users\Cie\Desktop\CA2_S00158056\CA2_S00158056\obj\Debug\CA2_S00158056.Migrations.actorDescription.resources
 C:\Users\Cie\Desktop\CA2_S00158056\CA2_S00158056\obj\Debug\CA2_S00158056.Migrations.modelfix.resources
+C:\Users\Cie\Desktop\CA2_S00158056\CA2_S00158056\obj\Debug\CA2_S00158056.Migrations.last.resources

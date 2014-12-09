@@ -153,6 +153,10 @@
     <Compile Include="Migrations\201411291603205_modelfix.Designer.cs">
       <DependentUpon>201411291603205_modelfix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412091112179_last.cs" />
+    <Compile Include="Migrations\201412091112179_last.Designer.cs">
+      <DependentUpon>201412091112179_last.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Models.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -378,6 +382,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411291603205_modelfix.resx">
       <DependentUpon>201411291603205_modelfix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412091112179_last.resx">
+      <DependentUpon>201412091112179_last.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
