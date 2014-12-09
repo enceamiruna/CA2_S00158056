@@ -71,13 +71,13 @@ A group of friends on a weekend trip to a cabin in the woods find themselves ter
                 imageUrl = "Movie6.jpg"
             });
 
-            context.Actors.Add(new Actor() { actorID = 1, actorName = "Jennifer Lawrence",description= @"This is an actor and there is so much to talk about them
+            context.Actors.AddOrUpdate(new Actor() { actorID = 1, actorName = "Jennifer Lawrence",description= @"This is an actor and there is so much to talk about them
 
 his is an actor and there is so much to talk about them
 
 his is an actor and there is so much to talk about them"
             });
-            context.Actors.Add(new Actor()
+            context.Actors.AddOrUpdate(new Actor()
             {
                 actorID = 2,
                 actorName = "Josh Hutcherson",
@@ -87,7 +87,7 @@ his is an actor and there is so much to talk about them
 
 his is an actor and there is so much to talk about them"
             });
-            context.Actors.Add(new Actor()
+            context.Actors.AddOrUpdate(new Actor()
             {
                 actorID = 3,
                 actorName = "Liam Hemsworth",
@@ -97,7 +97,7 @@ his is an actor and there is so much to talk about them
 
 his is an actor and there is so much to talk about them"
             });
-            context.Actors.Add(new Actor()
+            context.Actors.AddOrUpdate(new Actor()
             {
                 actorID = 4,
                 actorName = "Donald Sutherland",
@@ -107,7 +107,7 @@ his is an actor and there is so much to talk about them
 
 his is an actor and there is so much to talk about them"
             });
-            context.Actors.Add(new Actor()
+            context.Actors.AddOrUpdate(new Actor()
             {
                 actorID = 5,
                 actorName = "Paul AnnoyingPerson",
@@ -117,7 +117,7 @@ his is an actor and there is so much to talk about them
 
 his is an actor and there is so much to talk about them"
             });
-            context.Actors.Add(new Actor()
+            context.Actors.AddOrUpdate(new Actor()
             {
                 actorID = 6,
                 actorName = "Maggie CodeQueen",
@@ -127,7 +127,7 @@ his is an actor and there is so much to talk about them
 
 his is an actor and there is so much to talk about them"
             });
-            context.Actors.Add(new Actor()
+            context.Actors.AddOrUpdate(new Actor()
             {
                 actorID = 7,
                 actorName = "Cats AreNice",
@@ -137,7 +137,7 @@ his is an actor and there is so much to talk about them
 
 his is an actor and there is so much to talk about them"
             });
-            context.Actors.Add(new Actor()
+            context.Actors.AddOrUpdate(new Actor()
             {
                 actorID = 8,
                 actorName = "Willow Shields",
@@ -147,7 +147,7 @@ his is an actor and there is so much to talk about them
 
 his is an actor and there is so much to talk about them"
             });
-            context.Actors.Add(new Actor()
+            context.Actors.AddOrUpdate(new Actor()
             {
                 actorID = 9,
                 actorName = "Mahershala Ali",
@@ -157,7 +157,7 @@ his is an actor and there is so much to talk about them
 
 his is an actor and there is so much to talk about them"
             });
-            context.Actors.Add(new Actor()
+            context.Actors.AddOrUpdate(new Actor()
             {
                 actorID = 10,
                 actorName = "Stanley Tucci",
@@ -167,7 +167,7 @@ his is an actor and there is so much to talk about them
 
 his is an actor and there is so much to talk about them"
             });
-            context.Actors.Add(new Actor()
+            context.Actors.AddOrUpdate(new Actor()
             {
                 actorID = 11,
                 actorName = "Dogs Are NotAsNiceAsCats",
@@ -178,12 +178,12 @@ his is an actor and there is so much to talk about them
 his is an actor and there is so much to talk about them"
             });
 
-            context.ScreenNames.Add(new ScreenName() { movieID = 1, actorID = 1, screenName = "Katniss Everdeen" });
-            context.ScreenNames.Add(new ScreenName() { movieID = 2, actorID = 1, screenName = "The Cat Lady" });
-            context.ScreenNames.Add(new ScreenName() { movieID = 1, actorID = 2, screenName = "Peeta Mellark" });
-            context.ScreenNames.Add(new ScreenName() { movieID = 1, actorID = 6, screenName = "President Snow" });
-            context.ScreenNames.Add(new ScreenName() { movieID = 4, actorID = 3, screenName = "President Lion" });
-            context.ScreenNames.Add(new ScreenName() { movieID = 3, actorID = 1, screenName = "President Cat" });
+            context.ScreenNames.AddOrUpdate(new ScreenName() { movieID = 1, actorID = 1, screenName = "Katniss Everdeen" });
+            context.ScreenNames.AddOrUpdate(new ScreenName() { movieID = 2, actorID = 1, screenName = "The Cat Lady" });
+            context.ScreenNames.AddOrUpdate(new ScreenName() { movieID = 1, actorID = 2, screenName = "Peeta Mellark" });
+            context.ScreenNames.AddOrUpdate(new ScreenName() { movieID = 1, actorID = 6, screenName = "President Snow" });
+            context.ScreenNames.AddOrUpdate(new ScreenName() { movieID = 4, actorID = 3, screenName = "President Lion" });
+            context.ScreenNames.AddOrUpdate(new ScreenName() { movieID = 3, actorID = 1, screenName = "President Cat" });
         }
     }
 }
